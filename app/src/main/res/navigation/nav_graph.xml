@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/navigation_services">
+
+    <fragment
+        android:id="@+id/navigation_services"
+        android:name="com.example.barbershop.ui.service.ServiceSelectionFragment"
+        android:label="Services">
+        <action
+            android:id="@+id/action_serviceSelection_to_booking"
+            app:destination="@id/navigation_booking" />
+        <action
+            android:id="@+id/action_serviceSelection_to_appointments"
+            app:destination="@id/navigation_appointments" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_appointments"
+        android:name="com.example.barbershop.ui.appointments.AppointmentsFragment"
+        android:label="Appointments">
+        <action
+            android:id="@+id/action_appointments_to_services"
+            app:destination="@id/navigation_services" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.example.barbershop.ui.profile.ProfileFragment"
+        android:label="Profile" />
+
+    <fragment
+        android:id="@+id/navigation_booking"
+        android:name="com.example.barbershop.ui.booking.BookingFragment"
+        android:label="Book Appointment">
+        <argument
+            android:name="service"
+            app:argType="com.example.barbershop.model.Service" />
+        <action
+            android:id="@+id/action_booking_to_appointments"
+            app:destination="@id/navigation_appointments"
+            app:popUpTo="@id/navigation_services"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_admin"
+        android:name="com.example.barbershop.ui.admin.AdminSettingsFragment"
+        android:label="Admin Settings" />
+
+    <fragment
+        android:id="@+id/navigation_schedule"
+        android:name="com.example.barbershop.ui.admin.ScheduleManagementFragment"
+        android:label="Schedule Management"
+        tools:layout="@layout/fragment_schedule_management" />
+
+    <fragment
+        android:id="@+id/navigation_appointments_admin"
+        android:name="com.example.barbershop.ui.admin.AdminAppointmentsFragment"
+        android:label="Appointments"
+        tools:layout="@layout/fragment_admin_appointments" />
+
+    <action
+        android:id="@+id/action_service_details_to_booking"
+        app:destination="@id/navigation_booking"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+
+</navigation> 
